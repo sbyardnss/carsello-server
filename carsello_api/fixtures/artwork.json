@@ -21,7 +21,7 @@
     },
     {
         "model": "carsello_api.artwork",
-        "pk": 2,
+        "pk": 3,
         "fields": {
             "title": "union station",
             "image": "https://www.unionstationla.com/images/passageway-journey-artwork-crop.jpg",

@@ -10,7 +10,7 @@ class Event(models.Model):
     #                         auto_now_add=False, default=date.today)
     # time = models.TimeField(null=False, auto_now=False,
     #                         auto_now_add=False, default=now)
-    date_time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, default=datetime.now())
+    date_time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, default=now)
     image = models.URLField(null=True)
     link = models.URLField(null=True)
     details = models.CharField(null=True, max_length=200)
