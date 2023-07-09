@@ -1,0 +1,32 @@
+[
+    {
+        "model": "carsello_api.artwork",
+        "pk": 1,
+        "fields": {
+            "title": "the scream",
+            "image": "https://m.media-amazon.com/images/I/61s5JQPuZjS._AC_UF894,1000_QL80_.jpg",
+            "date": "2023-05-23",
+            "price": 200
+        }
+    },
+    {
+        "model": "carsello_api.artwork",
+        "pk": 2,
+        "fields": {
+            "title": "starry night",
+            "image": "https://blog.artweb.com/wp-content/uploads/2022/12/Van-Gogh-Starry-Night.jpg",
+            "date": "2023-05-20",
+            "price": 400
+        }
+    },
+    {
+        "model": "carsello_api.artwork",
+        "pk": 2,
+        "fields": {
+            "title": "union station",
+            "image": "https://www.unionstationla.com/images/passageway-journey-artwork-crop.jpg",
+            "date": "2020-11-10",
+            "price": 350
+        }
+    }
+]

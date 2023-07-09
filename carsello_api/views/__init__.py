@@ -1,0 +1,1 @@
+from .artwork_view import ArtworkView
