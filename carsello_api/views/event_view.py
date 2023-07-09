@@ -7,13 +7,13 @@ from carsello_api.models import Event
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'title', 'location', 'image', 'date', 'time', 'link')
+        fields = ('id', 'title', 'location', 'image', 'date_time', 'link', 'details')
 
 
 class CreateEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'title', 'location', 'image', 'date', 'time', 'link']
+        fields = ['id', 'title', 'location', 'image', 'date_time', 'link', 'details']
 
 
 class EventView(ViewSet):
@@ -43,6 +43,7 @@ class EventView(ViewSet):
         event.location = request.data['location']
         event.image = request.data['image']
         event.link = request.data['link']
+        event.details = request.data['details']
         event.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
