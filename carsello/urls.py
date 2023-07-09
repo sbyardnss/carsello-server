@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import include
 from django.urls import path
+from rest_framework import routers
+from carsello_api.views import ArtworkView, EventView
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'artwork', ArtworkView, 'artwork')
+router.register(r'events', EventView, 'event')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls))
 ]
