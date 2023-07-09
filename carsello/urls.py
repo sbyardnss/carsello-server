@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from carsello_api.views import ArtworkView, EventView
+from carsello_api.views import ArtworkView, EventView, UserView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'artwork', ArtworkView, 'artwork')
 router.register(r'events', EventView, 'event')
-
+router.register(r'user', UserView, 'users')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls))
