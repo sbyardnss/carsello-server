@@ -7,13 +7,13 @@ from carsello_api.models import Artwork
 class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ('id', 'title', 'price', 'image', 'date')
+        fields = ('id', 'title', 'price', 'image', 'year')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ['id', 'title', 'price', 'image', 'date']
+        fields = ['id', 'title', 'price', 'image', 'year']
 
 
 class ArtworkView(ViewSet):
@@ -38,7 +38,7 @@ class ArtworkView(ViewSet):
     def update(self, request, pk=None):
         art = Artwork.objects.get(pk=pk)
         art.title = request.data['title']
-        art.date = request.data['date']
+        art.year = request.data['year']
         art.price = request.data['price']
         art.image = request.data['image']
         art.save()
