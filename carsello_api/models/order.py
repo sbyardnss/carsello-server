@@ -2,13 +2,29 @@ from django.db import models
 
 
 class Order(models.Model):
-    buyer = models.CharField(max_length=50)
-    address = models.CharField(max_length=150)
-    total = models.PositiveIntegerField(null=False)
-    date_time = models.DateTimeField(auto_now_add=True)
-    item = models.ForeignKey('Artwork', on_delete=models.DO_NOTHING)
+    # buyer = models.CharField(max_length=50)
+    # address = models.CharField(max_length=150)
+    # total = models.PositiveIntegerField(null=False)
+    # date_time = models.DateTimeField(auto_now_add=True)
+    # item = models.ForeignKey('Artwork', on_delete=models.DO_NOTHING)
+    # paypal_order_id = models.CharField(max_length=75)
+    # OLD ABOVE
     paypal_order_id = models.CharField(max_length=75)
-    
+    created = models.CharField(max_length=75)
+    customer_paypal_id = models.CharField(max_length=50)
+    customer_email = models.CharField(max_length=75)
+    customer_name = models.CharField(max_length=50)
+    order_amount = models.PositiveIntegerField(null=False)
+    payment_id = models.CharField(max_length=50)
+    payment_status = models.CharField(max_length=25)
+    payment_protection = models.CharField(max_length=25)
+    reference_id = models.CharField(max_length=50)
+    shipping_street_address = models.CharField(max_length=75)
+    shipping_city = models.CharField(max_length=25)
+    shipping_state = models.CharField(max_length=10)
+    shipping_country_code = models.CharField(max_length=10)
+    shipping_zipcode = models.CharField(max_length=25)
+    order_status = models.CharField(max_length=25)
 # ordered_item (fk)
 
 # paypal_id charfield
