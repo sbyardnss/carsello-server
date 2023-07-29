@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from carsello_api.views import ArtworkView, EventView, UserView, login_user, send_email
+from carsello_api.views import ArtworkView, EventView, UserView, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'artwork', ArtworkView, 'artwork')
@@ -27,6 +27,6 @@ router.register(r'user', UserView, 'users')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', login_user),
-    path('send_email', send_email),
+    # path('send_email', send_email),
     path('', include(router.urls))
 ]

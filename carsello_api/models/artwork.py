@@ -6,3 +6,4 @@ class Artwork(models.Model):
     image = models.URLField()
     year = models.PositiveIntegerField(null=False)
     price = models.PositiveIntegerField()
+    sold = models.BooleanField(default=False)

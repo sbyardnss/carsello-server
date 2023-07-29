@@ -2,12 +2,14 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from carsello_api.models import Artwork
+from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import AllowAny
 
 
 class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ('id', 'title', 'price', 'image', 'year')
+        fields = ('id', 'title', 'price', 'image', 'year', 'sold')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
@@ -41,10 +43,19 @@ class ArtworkView(ViewSet):
         art.year = request.data['year']
         art.price = request.data['price']
         art.image = request.data['image']
+        art.sold = request.data['sold']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk=None):
         art = Artwork.objects.get(pk=pk)
         art.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    @permission_classes([AllowAny])
+    @action(methods=['put'], detail=True)
+    def set_sold(self, request, pk=None):
+        art = Artwork.objects.get(pk=pk)
+        art.sold = True
+        art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)

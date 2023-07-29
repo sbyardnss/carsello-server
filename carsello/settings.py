@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ADDED EMAIL SETTINGS BELOW FOR EMAILING. REMOVE IF UNNECESSARY
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST_USER = 'sjbyard91@gmail.com'
 
 # Application definition
 
