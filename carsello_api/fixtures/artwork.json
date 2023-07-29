@@ -7,7 +7,8 @@
             "image": "https://m.media-amazon.com/images/I/61s5JQPuZjS._AC_UF894,1000_QL80_.jpg",
             "year": "2023",
             "price": 200,
-            "sold": false
+            "sold": false,
+            "quantity": 1
         }
     },
     {
@@ -18,7 +19,8 @@
             "image": "https://blog.artweb.com/wp-content/uploads/2022/12/Van-Gogh-Starry-Night.jpg",
             "year": "2023",
             "price": 400,
-            "sold": false
+            "sold": false,
+            "quantity": 1
         }
     },
     {
@@ -29,7 +31,8 @@
             "image": "https://www.unionstationla.com/images/passageway-journey-artwork-crop.jpg",
             "year": "2020",
             "price": 350,
-            "sold": false
+            "sold": false,
+            "quantity": 1
         }
     }
 ]

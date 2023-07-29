@@ -58,5 +58,4 @@ class ArtworkView(ViewSet):
         art = Artwork.objects.get(pk=pk)
         art.sold = True
         art.save()
-        serialized = ArtworkSerializer(art, many=False)
-        return Response(serialized.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(None, status=status.HTTP_204_NO_CONTENT)

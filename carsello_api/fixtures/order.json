@@ -1,0 +1,25 @@
+[
+    {
+        "model": "carsello_api.order",
+        "pk": 1,
+        "fields": {
+            "ordered_item": null,
+            "paypal_order_id": "4JL64627E0227524J",
+            "created": "2023-07-29T15:36:43Z",
+            "customer_paypal_id": "4XA2LQYDTAAMS",
+            "customer_email": "sb-ozort26905778@personal.example.com",
+            "customer_name": "John Doe",
+            "order_amount": 200,
+            "payment_id": "40U16755SB922553M",
+            "payment_status": "COMPLETED",
+            "payment_protection": "ELIGIBLE",
+            "reference_id": "default",
+            "shipping_street_address": "1 Main St",
+            "shipping_city": "San Jose",
+            "shipping_state": "CA",
+            "shipping_country_code": "US",
+            "shipping_zipcode": "95131",
+            "order_status": "COMPLETED"
+        }
+    }
+]

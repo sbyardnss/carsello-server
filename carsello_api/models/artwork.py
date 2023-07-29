@@ -7,3 +7,5 @@ class Artwork(models.Model):
     year = models.PositiveIntegerField(null=False)
     price = models.PositiveIntegerField()
     sold = models.BooleanField(default=False)
+    quantity = models.PositiveIntegerField(default=1)
+
