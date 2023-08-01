@@ -1,6 +1,6 @@
-Delete from carsello_api_artwork
-WHERE id = 6
+Delete from carsello_api_order
+WHERE id > 1
 
 UPDATE carsello_api_artwork
-SET sold= false
-WHERE id = 1
+SET quantity = 10
+Where id = 7

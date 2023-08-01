@@ -9,13 +9,13 @@ from rest_framework.permissions import AllowAny
 class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ('id', 'title', 'price', 'image', 'year', 'sold')
+        fields = ('id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ['id', 'title', 'price', 'image', 'year']
+        fields = ['id', 'title', 'price', 'primary_image', 'year', 'support_images']
 
 
 class ArtworkView(ViewSet):
@@ -42,8 +42,9 @@ class ArtworkView(ViewSet):
         art.title = request.data['title']
         art.year = request.data['year']
         art.price = request.data['price']
-        art.image = request.data['image']
+        art.primary_image = request.data['primary_image']
         art.sold = request.data['sold']
+        art.support_images = request.data['support_images']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
