@@ -5,8 +5,8 @@ from carsello_api.models import Artwork
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import AllowAny
 
-
 class ArtworkSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Artwork
         fields = ('id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images')

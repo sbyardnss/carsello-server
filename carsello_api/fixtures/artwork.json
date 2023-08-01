@@ -10,36 +10,35 @@
             "sold": false,
             "quantity": 1,
             "dimensions": "3ft x 5ft",
-            "support_images": "[]"
-
-        }
-    },
-    {
-        "model": "carsello_api.artwork",
-        "pk": 2,
-        "fields": {
-            "title": "starry night",
-            "primary_image": "https://blog.artweb.com/wp-content/uploads/2022/12/Van-Gogh-Starry-Night.jpg",
-            "year": "2023",
-            "price": 400,
-            "sold": false,
-            "quantity": 1,
-            "dimensions": "3ft x 5ft",
-            "support_images": "[]"
-        }
-    },
-    {
-        "model": "carsello_api.artwork",
-        "pk": 3,
-        "fields": {
-            "title": "union station",
-            "primary_image": "https://www.unionstationla.com/images/passageway-journey-artwork-crop.jpg",
-            "year": "2020",
-            "price": 350,
-            "sold": false,
-            "quantity": 1,
-            "dimensions": "3ft x 5ft",
-            "support_images": "[]"
-        }
+            "support_images": "https://res.cloudinary.com/da0za1x54/image/upload/v1690908010/artwork/ncilvm3oup738zyktxll.heic, https://res.cloudinary.com/da0za1x54/image/upload/v1690908001/artwork/aqaomhid8amuxkpa8h7y.heic"
     }
+},
+{
+    "model": "carsello_api.artwork",
+    "pk": 2,
+    "fields": {
+        "title": "starry night",
+        "primary_image": "https://blog.artweb.com/wp-content/uploads/2022/12/Van-Gogh-Starry-Night.jpg",
+        "year": "2023",
+        "price": 400,
+        "sold": false,
+        "quantity": 1,
+        "dimensions": "3ft x 5ft",
+        "support_images": ""
+    }
+},
+{
+    "model": "carsello_api.artwork",
+    "pk": 3,
+    "fields": {
+        "title": "union station",
+        "primary_image": "https://www.unionstationla.com/images/passageway-journey-artwork-crop.jpg",
+        "year": "2020",
+        "price": 350,
+        "sold": false,
+        "quantity": 1,
+        "dimensions": "3ft x 5ft",
+        "support_images": ""
+    }
+}
 ]
