@@ -10,7 +10,7 @@
             "sold": false,
             "quantity": 1,
             "dimensions": "3ft x 5ft",
-            "support_images": "https://res.cloudinary.com/da0za1x54/image/upload/v1690908010/artwork/ncilvm3oup738zyktxll.heic, https://res.cloudinary.com/da0za1x54/image/upload/v1690908001/artwork/aqaomhid8amuxkpa8h7y.heic"
+            "support_images": []
     }
 },
 {
@@ -24,7 +24,7 @@
         "sold": false,
         "quantity": 1,
         "dimensions": "3ft x 5ft",
-        "support_images": ""
+        "support_images": []
     }
 },
 {
@@ -38,7 +38,7 @@
         "sold": false,
         "quantity": 1,
         "dimensions": "3ft x 5ft",
-        "support_images": ""
+        "support_images": []
     }
 }
 ]

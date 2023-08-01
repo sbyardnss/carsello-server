@@ -12,5 +12,5 @@ class Artwork(models.Model):
     sold = models.BooleanField(default=False)
     quantity = models.PositiveIntegerField(default=1)
     dimensions = models.CharField(max_length=50, null=True)
-    support_images = models.TextField(blank=True, null=True)
+    support_images = models.JSONField(blank=True, null=True)
 
