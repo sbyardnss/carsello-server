@@ -9,13 +9,13 @@ class ArtworkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artwork
-        fields = ('id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images')
+        fields = ('id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images', 'dimensions', 'quantity')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ['id', 'title', 'price', 'primary_image', 'year', 'support_images']
+        fields = ['id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images', 'dimensions', 'quantity']
 
 
 class ArtworkView(ViewSet):
