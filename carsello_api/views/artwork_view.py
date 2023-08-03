@@ -5,17 +5,20 @@ from carsello_api.models import Artwork
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import AllowAny
 
+
 class ArtworkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artwork
-        fields = ('id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images', 'dimensions', 'quantity')
+        fields = ('id', 'title', 'price', 'primary_image', 'year',
+                  'support_images', 'dimensions', 'quantity')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ['id', 'title', 'price', 'primary_image', 'year', 'sold', 'support_images', 'dimensions', 'quantity']
+        fields = ['id', 'title', 'price', 'primary_image',
+                  'year', 'support_images', 'dimensions', 'quantity']
 
 
 class ArtworkView(ViewSet):
@@ -43,8 +46,8 @@ class ArtworkView(ViewSet):
         art.year = request.data['year']
         art.price = request.data['price']
         art.primary_image = request.data['primary_image']
-        art.sold = request.data['sold']
         art.support_images = request.data['support_images']
+        art.quantity = request.data['quantity']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -52,11 +55,20 @@ class ArtworkView(ViewSet):
         art = Artwork.objects.get(pk=pk)
         art.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
+
     @permission_classes([AllowAny])
     @action(methods=['put'], detail=True)
     def set_sold(self, request, pk=None):
         art = Artwork.objects.get(pk=pk)
         art.sold = True
+        art.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    @permission_classes([AllowAny])
+    @action(methods=['put'], detail=True)
+    def quantity_decrement(self, request, pk=None):
+        art = Artwork.objects.get(pk=pk)
+        new_quantity = art.quantity-1
+        art.quantity = new_quantity
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
