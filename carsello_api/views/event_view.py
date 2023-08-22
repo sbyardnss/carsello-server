@@ -7,7 +7,7 @@ from carsello_api.models import Event
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'title', 'location', 'image', 'date_time', 'link', 'details', 'price')
+        fields = ('id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price')
 
 
 class CreateEventSerializer(serializers.ModelSerializer):
@@ -38,7 +38,8 @@ class EventView(ViewSet):
     def update(self, request, pk=None):
         event = Event.objects.get(pk=pk)
         event.title = request.data['title']
-        event.date_time = request.data['dateTime']
+        event.time = request.data['time']
+        event.date = request.data['date']
         event.location = request.data['location']
         event.image = request.data['image']
         event.link = request.data['link']
