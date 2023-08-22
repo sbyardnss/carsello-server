@@ -13,7 +13,7 @@ class EventSerializer(serializers.ModelSerializer):
 class CreateEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'title', 'location', 'image', 'date_time', 'link', 'details', 'price']
+        fields = ['id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price']
 
 
 class EventView(ViewSet):
