@@ -25,8 +25,10 @@ class ArtworkView(ViewSet):
     """handles requests for Artwork"""
 
     def list(self, request):
+        # art = Artwork.objects.all()
         art = Artwork.objects.all()
         serialized = ArtworkSerializer(art, many=True)
+        
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
@@ -48,7 +50,7 @@ class ArtworkView(ViewSet):
         art.primary_image = request.data['primary_image']
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
-        art.sort_index = request.data['sortIndex']
+        # art.sort_index = request.data['sort_index']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -56,6 +58,17 @@ class ArtworkView(ViewSet):
         art = Artwork.objects.get(pk=pk)
         art.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    @action(methods=['put'], detail=False)
+    def save_new_order(self, request):
+        for art_id in request.data:
+            art = Artwork.objects.get(pk = art_id)
+            art.sort_index = request.data[art_id]
+            # print('index', art.sort_index)
+            # print('artId', art_id)
+            art.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 
     # @permission_classes([AllowAny])
     # @action(methods=['put'], detail=True)
@@ -73,3 +86,4 @@ class ArtworkView(ViewSet):
         art.quantity = new_quantity
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    

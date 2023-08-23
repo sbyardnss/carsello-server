@@ -12,5 +12,5 @@ class Artwork(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     dimensions = models.CharField(max_length=50, null=True)
     support_images = models.JSONField(blank=True, null=True)
-    sort_index = models.PositiveIntegerField(blank=True, null=True, default=0)
+    sort_index = models.PositiveIntegerField(blank=True, null=True, default=None)
 
