@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from carsello_api.permission import AllowSafe
 from carsello_api.models import Artwork
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import AllowAny
@@ -23,12 +24,13 @@ class CreateArtworkSerializer(serializers.ModelSerializer):
 
 class ArtworkView(ViewSet):
     """handles requests for Artwork"""
+    permission_classes = [AllowSafe]
 
     def list(self, request):
         # art = Artwork.objects.all()
         art = Artwork.objects.all()
         serialized = ArtworkSerializer(art, many=True)
-        
+
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
@@ -51,24 +53,25 @@ class ArtworkView(ViewSet):
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
         # art.sort_index = request.data['sort_index']
+        self.check_object_permissions(request, art)
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk=None):
         art = Artwork.objects.get(pk=pk)
+        self.check_object_permissions(request, art)
         art.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    
+
     @action(methods=['put'], detail=False)
     def save_new_order(self, request):
         for art_id in request.data:
-            art = Artwork.objects.get(pk = art_id)
+            art = Artwork.objects.get(pk=art_id)
             art.sort_index = request.data[art_id]
             # print('index', art.sort_index)
             # print('artId', art_id)
             art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-
 
     # @permission_classes([AllowAny])
     # @action(methods=['put'], detail=True)
@@ -78,7 +81,7 @@ class ArtworkView(ViewSet):
     #     art.save()
     #     return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-    @permission_classes([AllowAny])
+    # @permission_classes([AllowAny])
     @action(methods=['put'], detail=True)
     def quantity_decrement(self, request, pk=None):
         art = Artwork.objects.get(pk=pk)
@@ -86,4 +89,3 @@ class ArtworkView(ViewSet):
         art.quantity = new_quantity
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-    

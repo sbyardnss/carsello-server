@@ -13,4 +13,5 @@ class Artwork(models.Model):
     dimensions = models.CharField(max_length=50, null=True)
     support_images = models.JSONField(blank=True, null=True)
     sort_index = models.PositiveIntegerField(blank=True, null=True, default=None)
-
+    class Meta:
+        permissions = (("quantity_decrement", "can decrease quantity of product after purchase"),)
