@@ -11,7 +11,7 @@ class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
         fields = ('id', 'title', 'price', 'primary_image', 'year',
-                  'support_images', 'dimensions', 'quantity')
+                  'support_images', 'dimensions', 'quantity', 'sort_index')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
@@ -48,7 +48,7 @@ class ArtworkView(ViewSet):
         art.primary_image = request.data['primary_image']
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
-        # art.sort_index = request.data['sortIndex']
+        art.sort_index = request.data['sortIndex']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
