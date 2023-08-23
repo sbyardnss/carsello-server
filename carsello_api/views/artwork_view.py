@@ -48,6 +48,7 @@ class ArtworkView(ViewSet):
         art.primary_image = request.data['primary_image']
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
+        # art.sort_index = request.data['sortIndex']
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -56,13 +57,13 @@ class ArtworkView(ViewSet):
         art.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-    @permission_classes([AllowAny])
-    @action(methods=['put'], detail=True)
-    def set_sold(self, request, pk=None):
-        art = Artwork.objects.get(pk=pk)
-        art.sold = True
-        art.save()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    # @permission_classes([AllowAny])
+    # @action(methods=['put'], detail=True)
+    # def set_sold(self, request, pk=None):
+    #     art = Artwork.objects.get(pk=pk)
+    #     art.sold = True
+    #     art.save()
+    #     return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     @permission_classes([AllowAny])
     @action(methods=['put'], detail=True)

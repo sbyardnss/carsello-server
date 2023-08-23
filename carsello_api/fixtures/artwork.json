@@ -10,7 +10,8 @@
             "sold": false,
             "quantity": 1,
             "dimensions": "3ft x 5ft",
-            "support_images": []
+            "support_images": [],
+            "sort_index": 1
     }
 },
 {
@@ -24,7 +25,8 @@
         "sold": false,
         "quantity": 1,
         "dimensions": "3ft x 5ft",
-        "support_images": []
+        "support_images": [],
+        "sort_index": 2
     }
 },
 {
@@ -38,7 +40,8 @@
         "sold": false,
         "quantity": 1,
         "dimensions": "3ft x 5ft",
-        "support_images": []
+        "support_images": [],
+        "sort_index": 3
     }
 }
 ]
