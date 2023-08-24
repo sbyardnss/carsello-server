@@ -19,7 +19,8 @@
             "shipping_state": "CA",
             "shipping_country_code": "US",
             "shipping_zipcode": "95131",
-            "order_status": "COMPLETED"
+            "order_status": "COMPLETED",
+            "shipped": false
         }
     }
 ]

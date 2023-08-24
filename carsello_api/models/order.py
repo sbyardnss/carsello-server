@@ -19,6 +19,7 @@ class Order(models.Model):
     shipping_country_code = models.CharField(max_length=10)
     shipping_zipcode = models.CharField(max_length=25)
     order_status = models.CharField(max_length=25)
+    shipped = models.BooleanField(default=False)
 
 # ordered_item (fk)
 
