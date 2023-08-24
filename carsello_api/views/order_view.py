@@ -8,14 +8,14 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', "ordered_item", "created", "customer_email", "customer_name", "customer_paypal_id", "order_amount", "order_status", "payment_id", "payment_protection", "payment_status",
-                  "paypal_order_id", "reference_id", "shipping_city", "shipping_country_code", "shipping_state", "shipping_street_address", "shipping_zipcode", "order_status")
+                  "paypal_order_id", "reference_id", "shipping_city", "shipping_country_code", "shipping_state", "shipping_street_address", "shipping_zipcode", "order_status", "shipped")
 
 
 class CreateOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', "ordered_item", "created", "customer_email", "customer_name", "customer_paypal_id", "order_amount", "order_status", "payment_id", "payment_protection", "payment_status",
-                  "paypal_order_id", "reference_id", "shipping_city", "shipping_country_code", "shipping_state", "shipping_street_address", "shipping_zipcode", "order_status", "shipped")
+                  "paypal_order_id", "reference_id", "shipping_city", "shipping_country_code", "shipping_state", "shipping_street_address", "shipping_zipcode", "order_status")
 
 
 class OrderView(ViewSet):
@@ -39,3 +39,10 @@ class OrderView(ViewSet):
         order = Order.objects.get(pk=pk)
         order.shipped = True
         order.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    @action(methods=["PUT"], detail=True)
+    def mark_not_shipped(self, request, pk=None):
+        order = Order.objects.get(pk=pk)
+        order.shipped = False
+        order.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
