@@ -4,6 +4,11 @@ from rest_framework import serializers, status
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
+
+# user = User.objects.get(pk=1)
+# user.set_password('lc')
+# user.save()
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

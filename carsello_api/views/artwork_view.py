@@ -53,7 +53,7 @@ class ArtworkView(ViewSet):
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
         # art.sort_index = request.data['sort_index']
-        self.check_object_permissions(request, art)
+        # self.check_object_permissions(request, art)
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
