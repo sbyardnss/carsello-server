@@ -12,14 +12,14 @@ class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
         fields = ('id', 'title', 'price', 'primary_image', 'year',
-                  'support_images', 'dimensions', 'quantity', 'sort_index')
+                  'support_images', 'dimensions', 'quantity', 'sort_index', 'range')
 
 
 class CreateArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
         fields = ['id', 'title', 'price', 'primary_image',
-                  'year', 'support_images', 'dimensions', 'quantity']
+                  'year', 'support_images', 'dimensions', 'quantity', 'range']
 
 
 class ArtworkView(ViewSet):
@@ -52,6 +52,7 @@ class ArtworkView(ViewSet):
         art.primary_image = request.data['primary_image']
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
+        art.range = request.data['range']
         # art.sort_index = request.data['sort_index']
         # self.check_object_permissions(request, art)
         art.save()
