@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 # THIS IS NEW
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication', #commented this line back in 
+        'rest_framework.authentication.TokenAuthentication',  # commented this line back in
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.IsAuthenticated',
@@ -63,8 +63,13 @@ REST_FRAMEWORK = {
 # THIS IS NEW
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'http://127.0.0.1:3000',
+    'https://carselloart.netlify.app'
+
 )
+CORS_ALLOWED_ORIGINS = [
+    'https://carselloart.netlify.app'
+]
 
 # UPDATE THIS
 MIDDLEWARE = [
