@@ -2,6 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from carsello_api.models import Event
+from carsello_api.permission import AllowSafe
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -18,7 +19,7 @@ class CreateEventSerializer(serializers.ModelSerializer):
 
 class EventView(ViewSet):
     """handles requests for Event"""
-
+    permission_classes = [AllowSafe]
     def list(self, request):
         events = Event.objects.all()
         serialized = EventSerializer(events, many=True)
@@ -32,6 +33,7 @@ class EventView(ViewSet):
     def create(self, request):
         serialized = CreateEventSerializer(data=request.data)
         serialized.is_valid(raise_exception=True)
+        self.check_object_permissions(request, serialized)
         serialized.save()
         return Response(serialized.data, status=status.HTTP_201_CREATED)
 
@@ -45,10 +47,12 @@ class EventView(ViewSet):
         event.link = request.data['link']
         event.details = request.data['details']
         event.price = request.data['price']
+        self.check_object_permissions(request, event)
         event.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk=None):
         event = Event.objects.get(pk=pk)
+        self.check_object_permissions(request, event)
         event.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
