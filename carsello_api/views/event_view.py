@@ -2,22 +2,26 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from carsello_api.models import Event
-
+from carsello_api.permission import AllowSafe
+from rest_framework.decorators import action, permission_classes
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price')
+        fields = ('id', 'title', 'location', 'image',
+                  'date', 'time', 'link', 'details', 'price')
 
 
 class CreateEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price']
+        fields = ['id', 'title', 'location', 'image',
+                  'date', 'time', 'link', 'details', 'price']
 
 
 class EventView(ViewSet):
     """handles requests for Event"""
+    permission_classes = [AllowSafe]
 
     def list(self, request):
         events = Event.objects.all()
