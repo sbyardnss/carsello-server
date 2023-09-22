@@ -27,7 +27,6 @@ class ArtworkView(ViewSet):
     permission_classes = [AllowSafe]
 
     def list(self, request):
-        # art = Artwork.objects.all()
         art = Artwork.objects.all()
         serialized = ArtworkSerializer(art, many=True)
 
@@ -41,6 +40,7 @@ class ArtworkView(ViewSet):
     def create(self, request):
         serialized = CreateArtworkSerializer(data=request.data)
         serialized.is_valid(raise_exception=True)
+        self.check_object_permissions(request, serialized)
         serialized.save()
         return Response(serialized.data, status=status.HTTP_201_CREATED)
 
@@ -53,8 +53,8 @@ class ArtworkView(ViewSet):
         art.support_images = request.data['support_images']
         art.quantity = request.data['quantity']
         art.range = request.data['range']
+        self.check_object_permissions(request, art)
         # art.sort_index = request.data['sort_index']
-        # self.check_object_permissions(request, art)
         art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -69,8 +69,7 @@ class ArtworkView(ViewSet):
         for art_id in request.data:
             art = Artwork.objects.get(pk=art_id)
             art.sort_index = request.data[art_id]
-            # print('index', art.sort_index)
-            # print('artId', art_id)
+            self.check_object_permissions(request, art)
             art.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
