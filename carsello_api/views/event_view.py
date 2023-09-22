@@ -8,18 +8,21 @@ from carsello_api.permission import AllowSafe
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price')
+        fields = ('id', 'title', 'location', 'image',
+                  'date', 'time', 'link', 'details', 'price')
 
 
 class CreateEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id', 'title', 'location', 'image', 'date', 'time', 'link', 'details', 'price']
+        fields = ['id', 'title', 'location', 'image',
+                  'date', 'time', 'link', 'details', 'price']
 
 
 class EventView(ViewSet):
     """handles requests for Event"""
     permission_classes = [AllowSafe]
+
     def list(self, request):
         events = Event.objects.all()
         serialized = EventSerializer(events, many=True)
